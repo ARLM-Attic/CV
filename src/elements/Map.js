@@ -57,7 +57,7 @@ var Map = BaseElement.extend({
 					new Platform(this, position, item.width);
 					break;
 				case 'text':
-					new Text(this, position, item.text, item.size, item.color);
+					new Text(this, position, item.text, item.size, item.color, item.headline);
 					break;
 				case 'school':
 					new School(this, position);

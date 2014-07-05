@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Lebenslauf - Jonas Schwabe</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="image_src" href="sprites/thumbnail.png" />
     <meta property="og:image" content="http://cascaded-web.com/Lebenslauf/sprites/thumbnail.png" />
     <meta property="og:url" content="http://cascaded-web.com/Lebenslauf/index.html" />
@@ -10,7 +11,11 @@
     <style>
     	@font-face { 
 		font-family: CVFont; 
-		src: url(fonts/eichante.ttf) format("truetype");
+		src: url(fonts/PrStart.ttf) format("truetype");
+	}
+	@font-face { 
+		font-family: CVHead; 
+		src: url(fonts/acme.ttf) format("truetype");
 	}
 	body{
 		color: white;	
@@ -43,7 +48,7 @@
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 </head>
 <body class="center">
-	<div class="hidden">Preload font!</div>
+	<div class="hidden">Preload font!<span style="font-family: CVHead;">More font!</span></div>
 	<script>
 		function init(){
 			var renderer = new RenderStage(800, 600);

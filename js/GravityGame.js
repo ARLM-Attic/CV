@@ -86,15 +86,9 @@ var BaseElement = Class.extend({
 		this.map.registerPlatform(pos, this.width);
 	}
 });
-;var Karlsruhe = SolidMapElement.extend({
+;var Karlsruhe = MapElement.extend({
 	init: function(map, position){
-		this.width = 600;
 		this._super(map, 'sprites/karlsruhe.png', position);
-		this.sprite.width = this.width;
-	},
-	registerBase: function(){
-		var pos = new Position(this.position.x, this.position.y + 252);
-		this.map.registerPlatform(pos, this.width);
 	}
 });
 ;var Map = BaseElement.extend({
@@ -156,7 +150,7 @@ var BaseElement = Class.extend({
 					new Platform(this, position, item.width);
 					break;
 				case 'text':
-					new Text(this, position, item.text, item.size, item.color);
+					new Text(this, position, item.text, item.size, item.color, item.headline);
 					break;
 				case 'school':
 					new School(this, position);
@@ -400,9 +394,11 @@ var BaseElement = Class.extend({
 	}
 });
 ;var Text = MapElement.extend({
-	init: function(map, position, text, size, color){
+	init: function(map, position, text, size, color, headline){
 		if(color === undefined) color = 'black';
-		this.sprite = new PIXI.Text(text, {font: size + " CVFont", fill: color});
+		var font = 'CVFont';
+		if(headline) font = 'CVHead';
+		this.sprite = new PIXI.Text(text, {font: size + " " + font, fill: color});
 		this._super(map, undefined, position);
 		map.getStage().addChild(this.sprite);
 	}
