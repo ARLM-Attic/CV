@@ -8,8 +8,22 @@ var mapItems = [{
 },{
 	item: 'text',
 	x: -400,
-	y: 45,
-	text: 'Pfeiltasten oder W A S D\n\n\n\nSTRG oder Shift\n\n\n\nLeertaste',
+	y: 35,
+	text: 'Pfeiltasten oder W A S D',
+	size: '20px',
+	color: '#ffffff'
+},{
+	item: 'text',
+	x: -400,
+	y: 118,
+	text: 'STRG oder Shift',
+	size: '20px',
+	color: '#ffffff'
+},{
+	item: 'text',
+	x: -400,
+	y: 200,
+	text: 'Leertaste',
 	size: '20px',
 	color: '#ffffff'
 },{
