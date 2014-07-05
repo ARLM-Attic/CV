@@ -1,37 +1,68 @@
+<!DOCTYPE HTML>
 <html>
 <head>
-    <title>pixi.js example 1</title>
+    <title>Lebenslauf - Jonas Schwabe</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #000000;
+    	@font-face { 
+		font-family: CVFont; 
+		src: url(fonts/eichante.ttf) format("truetype");
+	}
+	body{
+		color: white;	
+		margin: 0;
+		padding: 0;
+		background-color: #000000;
+		position: absolute;
+		
+	}
+        body.center {
+        	font-family: CVFont;
+		left: 50%;
+		margin-left: -400px;
+	       	top: 50%;
+       		margin-top: -300px;
+       		height: 600px;
+        }
+        .hidden {
+        	position: absolute;
+        	left: -100000px;
+        }
+        canvas {
+        	
         }
     </style>
+    <script src="sprites/map.js"></script>
     <script src="js/Class.js"></script>
-    <script src="pixi.js/bin/pixi.dev.js"></script>
+    <script src="js/pixi.js"></script>
     <script src="js/GravityGame.js"></script>
-    <script src="https://raw.githubusercontent.com/darsain/fpsmeter/master/dist/fpsmeter.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 </head>
-<body>
+<body class="center">
+	<div class="hidden">Preload font!</div>
 	<script>
-		var renderer = new RenderStage(800, 600);
-
-		for(var i = 0; i < 20; i++){
-			element = new BaseElement(renderer, "jonas_big.png", new Position(i*4,i), true);
-
-			element.changePosition(new Position(100-i*4, 100), 10000);
-			element.changeScale(new Position(1, 1), 10000);
-			
-		}
-		meter = new FPSMeter();
-		function meassure(){
-			meter.tick();
-			requestAnimFrame(meassure);
-			renderer.render();
-		}
-		requestAnimFrame(meassure);
+		function init(){
+			var renderer = new RenderStage(800, 600);
 		
+			renderer.getStage().x = -400;
+			var map = new Map(renderer, 100000);
+			var player = new Player(renderer, map, new Position(0,0), true);
+			
+			map.addItems(mapItems);
+			
+			function nextFrame(){
+				renderer.render();
+				requestAnimFrame(nextFrame);
+			}
+			requestAnimFrame(nextFrame);
+		}
+		document.onreadystatechange = function() {
+    			if (document.readyState === 'complete') {
+				var assetsToLoader = ["sprites/jonas.png","sprites/sap.png","sprites/basecom.png","sprites/school.png","sprites/karlsruhe.png","sprites/background.png","sprites/platform.png"  ];
+				var loader = new PIXI.AssetLoader(assetsToLoader, true);
+				loader.onComplete = init;
+				loader.load();
+			}
+		};
 	</script>
 </body>
 </html>

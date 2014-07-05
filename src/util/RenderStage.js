@@ -1,6 +1,6 @@
 var RenderStage = Class.extend({
 	init: function(width, height){
-		this.renderer = new PIXI.WebGLRenderer(width, height);
+		this.renderer = new PIXI.autoDetectRenderer(width, height);
 		document.body.appendChild(this.renderer.view);
 		this.stage = new PIXI.Stage();
 	},
